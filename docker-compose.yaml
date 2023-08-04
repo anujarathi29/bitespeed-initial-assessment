@@ -1,0 +1,39 @@
+version: "3"
+services: 
+  react-app:
+    image: front-end
+    ports:
+      - "3000:3000"
+    networks:
+      - bitespeed-app
+  api-server:
+    image: back-end
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    networks:
+      - bitespeed-app
+  database:
+    image: mongo
+    ports: 
+      - "27018:27017"
+    networks:
+      - bitespeed-app
+    volumes:
+      - ./data:/data/db
+  mongoui:
+    image : mongo-express
+    ports:
+      - "8081:8081"
+    depends_on:
+      - database
+    networks:
+      - bitespeed-app
+    environment:
+      ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
+      ME_CONFIG_MONGODB_PORT: 27018  
+
+networks:
+  bitespeed-app:
+  
