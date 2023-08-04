@@ -32,6 +32,7 @@ services:
       - bitespeed-app
     environment:
       ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
+      ME_CONFIG_MONGODB_SERVER: mongo
       ME_CONFIG_MONGODB_PORT: 27018  
 
 networks:
