@@ -1,0 +1,5 @@
+- type: web
+    name: bitespeed
+    runtime: docker
+    rootDir: bitespeed-initial-assessment
+    dockerCommand: docker compose up
