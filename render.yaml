@@ -1,5 +1,17 @@
-- type: web
-	name: bitespeed
-    runtime: docker
-    rootDir: bitespeed-initial-assessment
-    dockerCommand: docker compose up
+- service:
+    name: react-app
+    buildCommand: npm run build
+    directory: ./front-end
+
+- service:
+    name: api-server
+    buildCommand: npm run build
+    directory: ./back-end
+    startCommand: python3 wait-for-service.py database:27017 -- npm start
+
+- service:
+    name: database
+    image: mongo
+    volumes:
+      - name: database-volume
+        mountPath: /data/db
