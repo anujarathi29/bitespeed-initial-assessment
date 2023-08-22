@@ -1,14 +1,24 @@
-- type: service
-  name: react-app
-  buildCommand: npm run build
-  directory: ./front-end
+services:
 
-- type: service
-  name: api-server
-  buildCommand: npm run build
-  directory: ./back-end
-  startCommand: python3 wait-for-service.py database:27017 -- npm start
+  - type: web
+    name: react-app
+    env: docker
+    dockerfilePath: ./front-end/Dockerfile
+    buildCommand: npm run build
+    envVars:
+      - key: PORT
+        value: 3000
 
-- type: service
-  name: database
-  image: mongo
+  - type: web
+    name: api-server
+    env: docker
+    dockerfilePath: ./back-end/Dockerfile
+    buildCommand: npm run build
+    envVars:
+      - key: PORT
+        value: 8000
+    startCommand: python3 wait-for-service.py database:27017 -- npm start
+
+  - type: service
+    name: database
+    image: mongo
