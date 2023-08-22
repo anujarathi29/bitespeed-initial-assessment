@@ -1,17 +1,14 @@
-- service:
-    name: react-app
-    buildCommand: npm run build
-    directory: ./front-end
+- type: service
+  name: react-app
+  buildCommand: npm run build
+  directory: ./front-end
 
-- service:
-    name: api-server
-    buildCommand: npm run build
-    directory: ./back-end
-    startCommand: python3 wait-for-service.py database:27017 -- npm start
+- type: service
+  name: api-server
+  buildCommand: npm run build
+  directory: ./back-end
+  startCommand: python3 wait-for-service.py database:27017 -- npm start
 
-- service:
-    name: database
-    image: mongo
-    volumes:
-      - name: database-volume
-        mountPath: /data/db
+- type: service
+  name: database
+  image: mongo
