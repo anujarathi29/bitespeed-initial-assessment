@@ -7,21 +7,6 @@ Install the dependencies and devDependencies and start the server.
 ```sh
 git clone https://github.com/anujarathi29/bitespeed-initial-assessment
 ```
-Build the front-end image.
-
-```sh
-cd front-end
-docker build -t front-end:latest
-cd ..
-```
-Build the back-end image.
-
-```sh
-cd back-end
-docker build -t back-end:latest
-cd ..
-```
-
 Docker compose.
 
 ```sh
