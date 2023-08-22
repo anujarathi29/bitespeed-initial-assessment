@@ -19,6 +19,6 @@ services:
         value: 8000
     startCommand: python3 wait-for-service.py database:27017 -- npm start
 
-  - type: database
+  - type: web
     name: database
     image: mongo
